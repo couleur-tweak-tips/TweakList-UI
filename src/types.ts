@@ -21,11 +21,29 @@ export interface Optimization {
   Category?: string;
   FunctionName: string;
   DisplayName: string;
+  FilePath: string;
   Description: string;
   Parameters: {
     Name: string;
     ParameterType: 'array' | 'string' | 'switch';
     IsMandatory: boolean;
-    ValidValues: string[] | null;
+    ValidValues?: string[];
   }[];
+}
+
+// Not the full object but we only need those fields
+export interface Commit {
+  author: {
+    login: string;
+    avatar_url: string;
+    html_url: string;
+  };
+  commit: {
+    message: string;
+    author: {
+      date: string
+    }
+  };
+  html_url: string;
+  sha: string;
 }

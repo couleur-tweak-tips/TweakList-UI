@@ -3,7 +3,9 @@
   <div id="wrapper">
     <Categories></Categories>
     <TweakFuncs></TweakFuncs>
-    <Optimization></Optimization>
+    <Suspense>
+      <Optimization></Optimization>
+    </Suspense>
   </div>
 </template>
 
@@ -24,6 +26,7 @@ import '@/app';
   padding: 0;
   margin: 0;
   color: white;
+  user-select: none;
 }
 
 html {
@@ -69,5 +72,9 @@ div#wrapper {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(136, 136, 136, 0.39)
+}
+
+input[type=checkbox] {
+  cursor: pointer;
 }
 </style>

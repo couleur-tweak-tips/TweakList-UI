@@ -12,10 +12,15 @@
       <div
         class="tab"
         :class="{ selected: onlyShowSelected }"
-        @click="onlyShowSelected = true"
+        @click="
+          (onlyShowSelected = true),
+            (store.state.selectedCategory = 'All optimizations')
+        "
       >
         <h1>Selected</h1>
-        <span class="badge">{{ optimizations.filter((o) => o._selected).length }}</span>
+        <span class="badge">{{
+          store.state.optimizations.filter((o) => o._selected).length
+        }}</span>
       </div>
     </div>
     <div
@@ -23,10 +28,7 @@
       :style="{ height: `${columnHeight}px` }"
       :class="{ selected: onlyShowSelected }"
     >
-      <div
-        class="optimization"
-        v-for="optimization in optimizations"
-      >
+      <div class="optimization" v-for="optimization in optimizations" @click="store.state.selectedOptimization = optimization" :title="optimization.Description">
         <input type="checkbox" v-model="optimization._selected" />
         <span>{{ optimization.DisplayName }}</span>
       </div>
@@ -36,8 +38,8 @@
 
 <script lang="ts" setup>
 import store from '@/store';
-import { ref, watch } from 'vue';
 import { Optimization } from '@/types';
+import { ref, watch } from 'vue';
 
 const onlyShowSelected = ref(false);
 
@@ -69,8 +71,7 @@ function getAvailableOptimizations() {
 
 const optimizations = ref<Optimization[]>(getAvailableOptimizations());
 
-watch(getAvailableOptimizations, (v) => optimizations.value = v);
-
+watch(getAvailableOptimizations, (v) => (optimizations.value = v));
 </script>
 
 <style scoped>
@@ -94,6 +95,7 @@ div.tab {
   padding: 0 8px;
   cursor: pointer;
   border-radius: 6px;
+  transition: background-color 0.1s ease-in;
 }
 
 div.tab.selected::after {
@@ -123,14 +125,30 @@ span.badge {
   border: 1px solid #238636;
   padding: 0.12em 0.5em;
   border-radius: 2em;
+  font-family: monospace;
 }
 
 div#optimizations {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 div#optimizations.selected
   > div.optimization:not(:has(input[type='checkbox']:checked)) {
   display: none;
+}
+
+div.optimization {
+  height: 20px;
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border-bottom: var(--border);
+  cursor: pointer;
+  transition: background-color 0.1s ease-in;
+}
+
+div.optimization:hover {
+  background-color: #21262c;
 }
 </style>

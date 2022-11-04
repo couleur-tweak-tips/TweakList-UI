@@ -7,6 +7,7 @@ export default createStore({
     categories: [] as Category[],
     selectedOs: 'windows' as 'windows' | 'linux',
     selectedCategory: 'All optimizations',
+    selectedOptimization: null as unknown as Optimization
   },
   getters: {},
   mutations: {
@@ -19,7 +20,7 @@ export default createStore({
       payload = payload.map((opt: any) => ({
         ...opt,
         Parameters: opt.Parameters.map((param: any) => {
-          if (param.ValidValues !== null)
+          if (param.ValidValues && param.ValidValues !== null)
             param.ValidValues = param.ValidValues.split(' ');
           return param;
         }),
@@ -49,6 +50,7 @@ export default createStore({
 
       state.categories = categories;
       state.optimizations = payload;
+      state.selectedOptimization = payload[0];
     },
   },
   actions: {},
