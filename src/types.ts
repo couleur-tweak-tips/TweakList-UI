@@ -12,12 +12,12 @@ export interface NavButton {
 
 export interface Category {
   CategoryName: string;
-  Os: ('windows' | 'linux')[];
+  Os: ("windows" | "linux")[];
 }
 
 export interface Optimization {
   _selected?: boolean;
-  Platform: ('windows' | 'linux')[];
+  Platform: ("windows" | "linux")[];
   Category?: string;
   FunctionName: string;
   DisplayName: string;
@@ -25,7 +25,7 @@ export interface Optimization {
   Description: string;
   Parameters: {
     Name: string;
-    ParameterType: 'array' | 'string' | 'switch';
+    ParameterType: "array" | "string" | "switch";
     IsMandatory: boolean;
     ValidValues?: string[];
   }[];
@@ -41,8 +41,8 @@ export interface Commit {
   commit: {
     message: string;
     author: {
-      date: string
-    }
+      date: string;
+    };
   };
   html_url: string;
   sha: string;

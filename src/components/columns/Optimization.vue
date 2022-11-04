@@ -21,9 +21,9 @@
         </a>
         on
         {{
-          new Date(commit.commit.author.date).toLocaleDateString('en-us', {
-            month: 'short',
-            day: 'numeric',
+          new Date(commit.commit.author.date).toLocaleDateString("en-us", {
+            month: "short",
+            day: "numeric",
           })
         }}
       </p>
@@ -40,7 +40,7 @@
         )"
       >
         <label>
-          {{ parameter.Name }}{{ parameter.IsMandatory ? '*' : '' }}
+          {{ parameter.Name }}{{ parameter.IsMandatory ? "*" : "" }}
         </label>
         <select>
           <option
@@ -58,7 +58,7 @@
         )"
       >
         <label>
-          {{ parameter.Name }}{{ parameter.IsMandatory ? '*' : '' }}
+          {{ parameter.Name }}{{ parameter.IsMandatory ? "*" : "" }}
         </label>
         <input type="text" />
       </div>
@@ -69,7 +69,7 @@
         )"
       >
         <label>
-          {{ parameter.Name }}{{ parameter.IsMandatory ? '*' : '' }}
+          {{ parameter.Name }}{{ parameter.IsMandatory ? "*" : "" }}
         </label>
         <input type="checkbox" />
       </div>
@@ -79,9 +79,9 @@
 </template>
 
 <script lang="ts" setup>
-import store from '@/store';
-import { Commit } from '@/types';
-import { ref, watch } from 'vue';
+import store from "@/store";
+import { Commit } from "@/types";
+import { ref, watch } from "vue";
 
 async function getLatestCommitInfo() {
   const params = new URLSearchParams({

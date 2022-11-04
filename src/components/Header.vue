@@ -18,21 +18,21 @@
 </template>
 
 <script lang="ts" setup>
-import { NavAction, NavButton } from '@/types';
+import { NavAction, NavButton } from "@/types";
 
 const navItems: NavButton[] = [
   {
-    text: 'GitHub',
+    text: "GitHub",
     action: NavAction.LINK,
-    url: 'https://github.com/couleur-tweak-tips/TweakList',
+    url: "https://github.com/couleur-tweak-tips/TweakList",
   },
   {
-    text: 'Discord',
+    text: "Discord",
     action: NavAction.LINK,
-    url: 'https://discord.com/invite/aPVMJy78Pa',
+    url: "https://discord.com/invite/aPVMJy78Pa",
   },
   {
-    text: 'About',
+    text: "About",
     action: NavAction.COMPONENT,
     component: null,
   },
