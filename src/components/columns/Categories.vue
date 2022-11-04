@@ -3,38 +3,48 @@
     <Category
       text="All optimizations"
       icon="speedometer"
-      @click="selectedCategory = 'All optimizations'"
-      :selected="selectedCategory === 'All optimizations'"
+      @click="store.state.selectedCategory = 'All optimizations'"
+      :selected="store.state.selectedCategory === 'All optimizations'"
     ></Category>
-    <Separator title="Windows" v-model="isWindowShowed" @update:model-value="selectWindows"></Separator>
+    <Separator
+      title="Windows"
+      v-model="isWindowShowed"
+      @update:model-value="selectWindows"
+    ></Separator>
     <Category
-      v-show="selectedOs === 'windows'"
+      v-show="store.state.selectedOs === 'windows'"
       v-for="category in windowsCategories"
       :text="category.CategoryName"
       :icon="getIcon(category)"
       :selected="
-        selectedCategory === category.CategoryName && selectedOs === 'windows'
+        store.state.selectedCategory === category.CategoryName &&
+        store.state.selectedOs === 'windows'
       "
-      @click="selectedCategory = category.CategoryName"
+      @click="store.state.selectedCategory = category.CategoryName"
     ></Category>
-    <Separator title="Linux" v-model="isLinuxShowed" @update:model-value="selectLinux"></Separator>
+    <Separator
+      title="Linux"
+      v-model="isLinuxShowed"
+      @update:model-value="selectLinux"
+    ></Separator>
     <Category
-    v-show="selectedOs === 'linux'"
+      v-show="store.state.selectedOs === 'linux'"
       v-for="category in linuxCategories"
       :text="category.CategoryName"
       :icon="getIcon(category)"
       :selected="
-        selectedCategory === category.CategoryName && selectedOs === 'linux'
+        store.state.selectedCategory === category.CategoryName &&
+        store.state.selectedOs === 'linux'
       "
-      @click="selectedCategory = category.CategoryName"
+      @click="store.state.selectedCategory = category.CategoryName"
     ></Category>
     <Separator v-if="showUncategorized"></Separator>
     <Category
       v-if="showUncategorized"
       text="Uncategorized"
       icon="dots-horizontal"
-      @click="selectedCategory = 'Uncategorized'"
-      :selected="selectedCategory === 'Uncategorized'"
+      @click="store.state.selectedCategory = 'Uncategorized'"
+      :selected="store.state.selectedCategory === 'Uncategorized'"
     ></Category>
   </div>
 </template>
@@ -80,33 +90,30 @@ watch(
   }
 );
 
-const selectedOs = ref('windows');
-const selectedCategory = ref('All optimizations');
-
 const isWindowShowed = ref(true);
 const isLinuxShowed = ref(false);
 
 function selectWindows(state: boolean) {
-  selectedCategory.value = 'All optimizations';
+  store.state.selectedCategory = 'All optimizations';
   if (state === false) {
     isLinuxShowed.value = true;
-    selectedOs.value = 'linux';
+    store.state.selectedOs = 'linux';
     return;
   }
-  
-  selectedOs.value = 'windows';
+
+  store.state.selectedOs = 'windows';
   isLinuxShowed.value = !isWindowShowed.value;
 }
 
 function selectLinux(state: boolean) {
-  selectedCategory.value = 'All optimizations';
+  store.state.selectedCategory = 'All optimizations';
   if (state === false) {
     isWindowShowed.value = true;
-    selectedOs.value = 'windows';
+    store.state.selectedOs = 'windows';
     return;
   }
 
-  selectedOs.value = 'linux';
+  store.state.selectedOs = 'linux';
   isWindowShowed.value = !isLinuxShowed.value;
 }
 

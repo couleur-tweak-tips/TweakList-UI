@@ -16,6 +16,7 @@ export interface Category {
 }
 
 export interface Optimization {
+  _selected?: boolean;
   Platform: ('windows' | 'linux')[];
   Category?: string;
   FunctionName: string;

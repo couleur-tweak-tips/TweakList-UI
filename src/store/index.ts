@@ -5,6 +5,8 @@ export default createStore({
   state: {
     optimizations: [] as Optimization[],
     categories: [] as Category[],
+    selectedOs: 'windows' as 'windows' | 'linux',
+    selectedCategory: 'All optimizations',
   },
   getters: {},
   mutations: {

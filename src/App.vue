@@ -46,7 +46,28 @@ div#app {
 div#wrapper {
   flex: 1;
   display: grid;
-  grid-template-columns: 15% 25% 1fr;
+  grid-template-columns: 20% 20% 1fr;
   grid-template-rows: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(85, 85, 85, 0.39);
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(136, 136, 136, 0.39)
 }
 </style>
