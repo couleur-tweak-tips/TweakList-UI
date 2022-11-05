@@ -58,8 +58,7 @@ import { ref, watch } from 'vue';
 
 const knownCategoriesIcons: { [key: string]: string } = {
   Games: 'controller',
-  Office: 'microsoft',
-  Registry: 'package-variant-closed',
+  Programs: 'package-variant-closed'
 };
 
 function getIcon(category: ICategory): string {
