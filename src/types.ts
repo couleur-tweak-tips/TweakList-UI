@@ -17,18 +17,21 @@ export interface Category {
 
 export interface Optimization {
   _selected?: boolean;
-  Platform: ('windows' | 'linux')[];
-  Category?: string;
-  FunctionName: string;
-  DisplayName: string;
-  FilePath: string;
+
+  Name: string;
   Description: string;
   Parameters: {
+    Type: 'Array' | 'String' | 'Switch';
     Name: string;
-    ParameterType: 'array' | 'string' | 'switch';
+    KeyValues: { [key: string]: string };
+    Description: string;
+    ValidateSet?: string[];
     IsMandatory: boolean;
-    ValidValues?: string[];
   }[];
+  Path: string;
+  'Display Name': string;
+  Platform: ('windows' | 'linux')[];
+  Category?: string;
 }
 
 // Not the full object but we only need those fields

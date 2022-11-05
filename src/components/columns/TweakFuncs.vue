@@ -35,7 +35,7 @@
         :title="optimization.Description"
       >
         <input type="checkbox" v-model="optimization._selected" />
-        <span>{{ optimization.DisplayName }}</span>
+        <span>{{ optimization['Display Name'] }}</span>
       </div>
     </div>
   </div>

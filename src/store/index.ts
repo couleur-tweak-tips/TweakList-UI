@@ -14,20 +14,20 @@ const store = createStore({
   },
   getters: {},
   mutations: {
-    setOptimizations(state, payload) {
+    setOptimizations(state, payload: Optimization[]) {
       // The optimization list from the API
       // set the `ValidValues` field as a string
       // where the values are space separated.
       // Those two map methods are used to
       // convert this field into a JS array
-      payload = payload.map((opt: any) => ({
-        ...opt,
-        Parameters: opt.Parameters.map((param: any) => {
-          if (param.ValidValues && param.ValidValues !== null)
-            param.ValidValues = param.ValidValues.split(' ');
-          return param;
-        }),
-      }));
+      payload = payload.map((opt) => {
+        opt.Path = opt.Path.replace('/modules/', 'modules/');
+        opt.Platform = opt.Platform.map((v) => v.toLowerCase()) as (
+          | 'windows'
+          | 'linux'
+        )[];
+        return opt;
+      });
 
       const categories: Category[] = [];
 

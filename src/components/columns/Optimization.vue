@@ -29,15 +29,17 @@
       </p>
     </div>
     <div id="content">
-      <h1>{{ store.state.selectedOptimization.DisplayName }}</h1>
-      <p>{{ store.state.selectedOptimization.Description }}</p>
+      <h1>{{ store.state.selectedOptimization?.['Display Name'] }}</h1>
+      <p>{{ store.state.selectedOptimization?.Description }}</p>
 
       <h2>Parameters</h2>
       <div
         class="parameter string-drop-down"
-        v-for="parameter in store.state.selectedOptimization.Parameters.filter(
-          (p) => p.ParameterType === 'string' && Array.isArray(p.ValidValues)
-        )"
+        v-for="parameter in store.state.selectedOptimization
+          ? store.state.selectedOptimization.Parameters.filter(
+              (p) => p.Type === 'String' && Array.isArray(p.ValidateSet)
+            )
+          : []"
       >
         <label>
           {{ parameter.Name }}
@@ -45,7 +47,7 @@
         </label>
         <select>
           <option
-            v-for="validValue in parameter.ValidValues"
+            v-for="validValue in parameter.ValidateSet"
             :value="validValue"
           >
             {{ validValue }}
@@ -54,9 +56,11 @@
       </div>
       <div
         class="parameter string"
-        v-for="parameter in store.state.selectedOptimization.Parameters.filter(
-          (p) => p.ParameterType === 'string' && !Array.isArray(p.ValidValues)
-        )"
+        v-for="parameter in store.state.selectedOptimization
+          ? store.state.selectedOptimization.Parameters.filter(
+              (p) => p.Type === 'String' && !Array.isArray(p.ValidateSet)
+            )
+          : []"
       >
         <label>
           {{ parameter.Name }}
@@ -66,9 +70,11 @@
       </div>
       <div
         class="parameter switch"
-        v-for="parameter in store.state.selectedOptimization.Parameters.filter(
-          (p) => p.ParameterType === 'switch'
-        )"
+        v-for="parameter in store.state.selectedOptimization
+          ? store.state.selectedOptimization.Parameters.filter(
+              (p) => p.Type === 'Switch'
+            )
+          : []"
       >
         <label>
           {{ parameter.Name }}
@@ -86,9 +92,26 @@ import store from '@/store';
 import { Commit } from '@/types';
 import { ref, watch } from 'vue';
 
-async function getLatestCommitInfo() {
+async function getLatestCommitInfo(): Promise<Commit> {
+  if (!store.state.selectedOptimization)
+    return {
+      author: {
+        avatar_url: '',
+        html_url: '',
+        login: 'Loading',
+      },
+      commit: {
+        author: {
+          date: '',
+        },
+        message: 'Loading...',
+      },
+      html_url: '',
+      sha: '',
+    };
+
   const params = new URLSearchParams({
-    path: store.state.selectedOptimization.FilePath,
+    path: store.state.selectedOptimization.Path,
   });
 
   const response = await fetch(
