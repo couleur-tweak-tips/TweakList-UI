@@ -5,28 +5,36 @@
     @click="store.state.showAbout = false"
   ></div>
   <div id="about" v-show="store.state.showAbout">
-    <h1>About TweakList UI</h1>
+    <h1>What's all the knobs and tickboxes for?</h1>
+
     <h4>TweakList UI</h4>
     <p>
-      TweakList-UI leverages the PowerShell scripting framework
+      TweakList-UI makes the PowerShell scripting framework
       <a
-        href="https://github.com/couleur-tweak-tips/TweakList-UI"
+        href="https://github.com/couleur-tweak-tips/TweakList"
         target="_blank"
         >TweakList</a
       >
-      in an user-friendly web interface for everyone to enjoy it's delicious
-      <a
-        href="https://github.com/couleur-tweak-tips/TweakList/blob/master/docs/TweakFuncs.md"
-        target="_blank"
-        >tweakfuncs</a
-      >
-      😋
+      accessible for everyone in an user-friendly web interface 😋,
+      select what you want, paste what it generates in your console,
+      and it'll take care of making it happen!
     </p>
+
     <h4>TweakList</h4>
     <p>
-      TweakList is a PowerShell module aiming to regroup every impactful tweaks
-      for fine tuning, stripping and optimizing Windows, each tweaks has it's
-      own file and can be put together as a "TweakScript"
+      TweakList is a collection of useful PowerShell scripts
+      to automate setting up Windows the way you want it, not Microsoft's.
+      It can also 
+      <a
+      href="https://github.com/couleur-tweak-tips/TweakList/tree/master/modules/Game%20%26%20Program%20tuners"
+      target="_blank"
+      >set up your favorite programs</a
+      > and have all it's functions imported in a
+      <a
+      href="https://github.com/couleur-tweak-tips/TweakList#get-started-with-a-single-command"
+      target="_blank"
+      >single command</a
+      >, we aims to make it both scriptable for us CLI nerds and welcoming for the conhost novices.
     </p>
     <h4>Authors</h4>
     <div id="authors">
@@ -42,6 +50,10 @@
         <p>{{ author.role }}</p>
       </div>
     </div>
+    Also see <a
+    href="https://github.com/couleur-tweak-tips/TweakList#ive-borrowed-some-stuff-with-permission-from-these-scriptslists"
+    target="_blank"
+    >TweakList's credits</a>
   </div>
 </template>
 
@@ -66,15 +78,15 @@ const authors = [
   {
     name: 'Couleur',
     github: 'https://github.com/couleurm',
-    avatar: 'https://avatars.githubusercontent.com/u/82747632?v=4',
-    role: 'Powershell genius',
+    avatar: 'https://avatars.githubusercontent.com/u/82747632',
+    role: 'Scripts & CI',
   },
   {
     name: 'Cy0ze',
     github: 'https://github.com/richarddorian',
     avatar:
       'https://cdn.discordapp.com/avatars/690835131275018270/81860734f375ea9f1806edb46d0638fb.webp',
-    role: 'TweakList UI developer',
+    role: 'UI',
   },
 ];
 </script>
