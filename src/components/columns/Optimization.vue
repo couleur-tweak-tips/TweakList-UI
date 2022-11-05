@@ -40,7 +40,8 @@
         )"
       >
         <label>
-          {{ parameter.Name }}{{ parameter.IsMandatory ? "*" : "" }}
+          {{ parameter.Name }}
+          <span class="required">{{ parameter.IsMandatory ? "*" : "" }}</span>
         </label>
         <select>
           <option
@@ -58,7 +59,8 @@
         )"
       >
         <label>
-          {{ parameter.Name }}{{ parameter.IsMandatory ? "*" : "" }}
+          {{ parameter.Name }}
+          <span class="required">{{ parameter.IsMandatory ? "*" : "" }}</span>
         </label>
         <input type="text" />
       </div>
@@ -69,11 +71,12 @@
         )"
       >
         <label>
-          {{ parameter.Name }}{{ parameter.IsMandatory ? "*" : "" }}
+          {{ parameter.Name }}
+          <span class="required">{{ parameter.IsMandatory ? "*" : "" }}</span>
         </label>
         <input type="checkbox" />
       </div>
-      <i>* Required field</i>
+      <i><span class="required">*</span> Required field</i>
     </div>
   </div>
 </template>
@@ -170,6 +173,10 @@ div#header > p > a {
   color: #8b949e;
 }
 
+div#header > p > a:hover {
+  color: #58a6ff;
+}
+
 div#content {
   padding: 20px;
 }
@@ -192,6 +199,10 @@ div.parameter > label {
   color: #c1d1d9;
   margin-right: 5px;
   transform: translateY(-1px);
+}
+
+span.required {
+  color: #f08080;
 }
 
 div.string-drop-down > select {
