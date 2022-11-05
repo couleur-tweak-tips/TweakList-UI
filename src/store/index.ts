@@ -1,7 +1,8 @@
 import { Category, Optimization } from '@/types';
 import { createStore } from 'vuex';
+import { UAParser } from 'ua-parser-js';
 
-export default createStore({
+const store = createStore({
   state: {
     showAbout: false,
     optimizations: [] as Optimization[],
@@ -9,6 +10,7 @@ export default createStore({
     selectedOs: 'windows' as 'windows' | 'linux',
     selectedCategory: 'All optimizations',
     selectedOptimization: null as unknown as Optimization,
+    userOs: UAParser().os.name,
   },
   getters: {},
   mutations: {
@@ -57,3 +59,7 @@ export default createStore({
   actions: {},
   modules: {},
 });
+
+store.state.selectedOs = store.state.userOs === 'Windows' ? 'windows' : 'linux';
+
+export default store;

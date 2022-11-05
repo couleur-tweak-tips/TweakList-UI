@@ -13,10 +13,12 @@
   },
   "dependencies": {
     "mdi-vue": "^3.0.13",
+    "ua-parser-js": "^1.0.32",
     "vue": "^3.2.13",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
+    "@types/ua-parser-js": "^0.7.36",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.8",
