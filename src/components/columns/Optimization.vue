@@ -32,6 +32,27 @@
       <h1>{{ store.state.selectedOptimization?.['Display Name'] }}</h1>
       <p>{{ store.state.selectedOptimization?.Description }}</p>
 
+      <h2>Explanations</h2>
+      <p
+        v-for="parameter in store.state.selectedOptimization
+          ? store.state.selectedOptimization.Parameters.filter(
+              (p) => Object.keys(p.KeyValues).length > 1
+            )
+          : []"
+      >
+        Possible values for
+        <strong>
+          {{ parameter.Name }}
+        </strong>
+        :
+        <ul>
+        <li v-for="item in Object.keys(parameter.KeyValues)">
+          <strong>{{ item }}:</strong>
+          {{ parameter.KeyValues[item] }}
+        </li>
+      </ul>
+      </p>
+
       <h2>Parameters</h2>
       <div
         class="parameter string-drop-down"
@@ -202,6 +223,14 @@ div#header > p > a:hover {
 
 div#content {
   padding: 20px;
+}
+
+div#content > h2 {
+  margin-top: 20px;
+}
+
+div#content > p > ul {
+  margin-left: 20px;
 }
 
 div#content > i {
