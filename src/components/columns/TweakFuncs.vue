@@ -42,15 +42,15 @@
 </template>
 
 <script lang="ts" setup>
-import store from "@/store";
-import { Optimization } from "@/types";
-import { ref, watch } from "vue";
+import store from '@/store';
+import { Optimization } from '@/types';
+import { ref, watch } from 'vue';
 
 const onlyShowSelected = ref(false);
 
 const columnHeight = ref(calculateColumHeight());
 window.addEventListener(
-  "resize",
+  'resize',
   () => (columnHeight.value = calculateColumHeight())
 );
 function calculateColumHeight() {
@@ -62,9 +62,9 @@ function getAvailableOptimizations() {
     const validOs = optimization.Platform.includes(store.state.selectedOs);
 
     if (!optimization.Category)
-      return validOs && store.state.selectedCategory === "Uncategorized";
+      return validOs && store.state.selectedCategory === 'Uncategorized';
     else {
-      if (store.state.selectedCategory === "All optimizations")
+      if (store.state.selectedCategory === 'All optimizations')
         return validOs && true;
       else
         return (
@@ -104,7 +104,7 @@ div.tab {
 }
 
 div.tab.selected::after {
-  content: "";
+  content: '';
   width: 85%;
   height: 2px;
   background-color: #f78166;
@@ -138,7 +138,7 @@ div#optimizations {
 }
 
 div#optimizations.selected
-  > div.optimization:not(:has(input[type="checkbox"]:checked)) {
+  > div.optimization:not(:has(input[type='checkbox']:checked)) {
   display: none;
 }
 

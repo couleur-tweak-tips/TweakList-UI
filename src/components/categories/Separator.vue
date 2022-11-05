@@ -12,10 +12,10 @@ const props = defineProps({
   modelValue: Boolean,
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue']);
 
 function toggleState() {
-  emit("update:modelValue", !props.modelValue);
+  emit('update:modelValue', !props.modelValue);
 }
 </script>
 

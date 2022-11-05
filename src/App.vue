@@ -7,15 +7,17 @@
       <Optimization></Optimization>
     </Suspense>
   </div>
+  <About></About>
 </template>
 
 <script lang="ts" setup>
-import Categories from "@/components/columns/Categories.vue";
-import Optimization from "@/components/columns/Optimization.vue";
-import TweakFuncs from "@/components/columns/TweakFuncs.vue";
-import Header from "@/components/Header.vue";
+import Categories from '@/components/columns/Categories.vue';
+import Optimization from '@/components/columns/Optimization.vue';
+import TweakFuncs from '@/components/columns/TweakFuncs.vue';
+import Header from '@/components/Header.vue';
+import About from './components/About.vue';
 
-import "@/app";
+import '@/app';
 </script>
 
 <style>
@@ -31,13 +33,14 @@ import "@/app";
 
 html {
   height: 100%;
+  color-scheme: dark;
 }
 
 body {
   height: 100%;
   background-color: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 }
 
 div#app {
@@ -74,7 +77,7 @@ div#wrapper {
   background: rgba(136, 136, 136, 0.39);
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   cursor: pointer;
 }
 </style>

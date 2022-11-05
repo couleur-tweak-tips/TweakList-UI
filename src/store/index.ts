@@ -1,12 +1,13 @@
-import { Category, Optimization } from "@/types";
-import { createStore } from "vuex";
+import { Category, Optimization } from '@/types';
+import { createStore } from 'vuex';
 
 export default createStore({
   state: {
+    showAbout: true,
     optimizations: [] as Optimization[],
     categories: [] as Category[],
-    selectedOs: "windows" as "windows" | "linux",
-    selectedCategory: "All optimizations",
+    selectedOs: 'windows' as 'windows' | 'linux',
+    selectedCategory: 'All optimizations',
     selectedOptimization: null as unknown as Optimization,
   },
   getters: {},
@@ -21,7 +22,7 @@ export default createStore({
         ...opt,
         Parameters: opt.Parameters.map((param: any) => {
           if (param.ValidValues && param.ValidValues !== null)
-            param.ValidValues = param.ValidValues.split(" ");
+            param.ValidValues = param.ValidValues.split(' ');
           return param;
         }),
       }));

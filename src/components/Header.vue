@@ -18,22 +18,23 @@
 </template>
 
 <script lang="ts" setup>
-import { NavAction, NavButton } from "@/types";
+import store from '@/store';
+import { NavAction, NavButton } from '@/types';
 
 const navItems: NavButton[] = [
   {
-    text: "GitHub",
+    text: 'GitHub',
     action: NavAction.LINK,
-    url: "https://github.com/couleur-tweak-tips/TweakList",
+    url: 'https://github.com/couleur-tweak-tips/TweakList',
   },
   {
-    text: "Discord",
+    text: 'Discord',
     action: NavAction.LINK,
-    url: "https://discord.com/invite/aPVMJy78Pa",
+    url: 'https://discord.com/invite/aPVMJy78Pa',
   },
   {
-    text: "About",
-    action: NavAction.COMPONENT,
+    text: 'About',
+    action: NavAction.ABOUT,
     component: null,
   },
 ];
@@ -41,8 +42,8 @@ const navItems: NavButton[] = [
 function onNavItemClicked(item: NavButton) {
   if (item.action === NavAction.LINK) return;
 
-  if (item.action === NavAction.COMPONENT) {
-    // TODO: Handle component NavAction
+  if (item.action === NavAction.ABOUT) {
+    store.state.showAbout = true;
   }
 }
 </script>
