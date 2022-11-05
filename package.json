@@ -19,7 +19,7 @@
   "devDependencies": {
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "@vue/cli-service": "~5.0.8",
     "typescript": "~4.5.5"
   }
 }
