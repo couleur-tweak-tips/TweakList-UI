@@ -95,7 +95,7 @@ div#about {
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   background-color: #161b22;
-  width: 50%;
+  width: 35%;
   min-width: 300px;
   height: fit-content;
   border-radius: 6px;
