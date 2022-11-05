@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    showAbout: true,
+    showAbout: false,
     optimizations: [] as Optimization[],
     categories: [] as Category[],
     selectedOs: 'windows' as 'windows' | 'linux',
