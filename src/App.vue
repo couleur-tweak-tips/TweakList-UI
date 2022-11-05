@@ -1,13 +1,16 @@
 <template>
-  <Header></Header>
-  <div id="wrapper">
-    <Categories></Categories>
-    <TweakFuncs></TweakFuncs>
-    <Suspense>
-      <Optimization></Optimization>
-    </Suspense>
+  <MobileWarning v-model="showApp"></MobileWarning>
+  <div v-if="showApp">
+    <Header></Header>
+    <div id="wrapper">
+      <Categories></Categories>
+      <TweakFuncs></TweakFuncs>
+      <Suspense>
+        <Optimization></Optimization>
+      </Suspense>
+    </div>
+    <About></About>
   </div>
-  <About></About>
 </template>
 
 <script lang="ts" setup>
@@ -18,6 +21,13 @@ import Header from '@/components/Header.vue';
 import About from './components/About.vue';
 
 import '@/app';
+import MobileWarning from './components/MobileWarning.vue';
+import { ref } from 'vue';
+import store from './store';
+
+const showApp = ref(
+  store.state.userOs === 'Windows' || store.state.userOs === 'Linux'
+);
 </script>
 
 <style>
