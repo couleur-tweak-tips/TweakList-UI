@@ -54,6 +54,13 @@ const store = createStore({
       state.categories = categories;
       state.optimizations = payload;
       state.selectedOptimization = payload[0];
+
+      const url = new URLSearchParams(window.location.search);
+      const optimizationForParam = payload.find(
+        (v) => v.Name === url.get('tweak')
+      );
+      if (optimizationForParam)
+        state.selectedOptimization = optimizationForParam;
     },
   },
   actions: {},

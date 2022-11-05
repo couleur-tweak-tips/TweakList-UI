@@ -1,3 +1,4 @@
+import { watch } from 'vue';
 import store from './store';
 
 async function fetchOptimizations(): Promise<void> {
@@ -9,3 +10,13 @@ async function fetchOptimizations(): Promise<void> {
 }
 
 fetchOptimizations();
+
+watch(
+  () => store.state.selectedOptimization,
+  (v) => {
+    const params = new URLSearchParams({
+      tweak: v.Name,
+    });
+    window.history.replaceState('TweakList-UI', '', `?${params.toString()}`);
+  }
+);
