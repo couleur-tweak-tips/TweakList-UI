@@ -17,6 +17,7 @@ watch(
     const params = new URLSearchParams({
       tweak: v.Name,
     });
-    window.history.replaceState('TweakList-UI', '', `?${params.toString()}`);
+    console.log(params);
+    window.history.replaceState('TweakList-UI', '', `#${params.toString()}`);
   }
 );

@@ -46,7 +46,12 @@
       @click="store.state.selectedCategory = 'Uncategorized'"
       :selected="store.state.selectedCategory === 'Uncategorized'"
     ></Category>
+    <Separator></Separator>
+    <div class="export">
+      <button @click="displayAlert">Export</button>
+    </div>
   </div>
+
 </template>
 
 <script lang="ts" setup>
@@ -55,6 +60,10 @@ import Separator from '@/components/categories/Separator.vue';
 import store from '@/store';
 import { Category as ICategory } from '@/types';
 import { ref, watch } from 'vue';
+
+function displayAlert() {
+  console.log(store)
+}
 
 const knownCategoriesIcons: { [key: string]: string } = {
   Games: 'controller',
