@@ -137,15 +137,13 @@ function V2loadParameters(funcName) {
 
                     const savedValue = getParameter('func_' + funcName, paramName)
 
-                    if (savedValue) {
-                        radioInput.checked = true
-                    } else if (radioValue === tlui[funcName].parameters[paramName].default) {
-                        radioInput.checked = true
-                    }
-
                     radioInput.addEventListener('change', () => {
                         writeParameter('func_' + funcName, paramName, radioValue)
                     })
+                    if (savedValue || (radioValue === tlui[funcName].parameters[paramName].default)) {
+                        radioInput.checked = true
+                        radioInput.dispatchEvent(new Event('change'));
+                    }
                     radioDiv.appendChild(radioInput)
 
 
