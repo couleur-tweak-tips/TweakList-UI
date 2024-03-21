@@ -2,7 +2,7 @@
   <header>
     <img
       src="https://avatars.githubusercontent.com/u/82734468?s=200&v=4"
-      alt="Couleur's profile picture"
+      alt="CTT Logo"
       draggable="false"
     />
     <nav>
