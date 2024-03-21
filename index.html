@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>TweakList-UI</title>
+    <!--
+    notable global variables:
+
+    - tlui holds the template to build container
+    - conf holds the user defined parameters, synced with localStorage
+    -->
+    <script src="init.js"></script>
+    <script src="storageManager.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<div class="nav">
+    <a href="https://ctt.cx" target="_blank">
+        <img
+            src="https://avatars.githubusercontent.com/u/82734468?s=200"
+            style="width: 38px; height: 38px; border-radius: 100%"
+            alt="CTT Logo"
+        >
+    </a>
+
+    <a
+        style="padding-right: 0"
+        href="https://github.com/couleur-tweak-tips/TweakList"
+        target="_blank"
+        class="nav-link"
+        title="Repository for the source code of the PowerShell module this website helps you generate commands of"
+    >TweakList</a>
+
+    <span style="margin: 0;">&ndash;</span>
+
+    <a
+        style="padding-left: 0" href="https://github.com/couleur-tweak-tips/TweakList"
+        target="_blank"
+        class="nav-link"
+        title="Repository for the source code of this website"
+    >UI</a>
+</div> <!--nav-->
+<div id="export"></div>
+
+<div id="container">
+    <div id="functions">
+        <h2>Functions</h2>
+        <ul id="functions-list"><!--automatically generated --></ul>
+        <button style="display: table; margin: auto" onclick="exportCode()">Export</button>
+    </div>
+    <div id="parameters">
+        <h2>Parameters</h2>
+        <div id="parameters-pane"><!--automatically generated --></div>
+    </div>
+</div>
+<script>
+    loadList(tlui)
+</script>
+
+</body>
+</html>
