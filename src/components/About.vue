@@ -5,22 +5,27 @@
     @click="store.state.showAbout = false"
   ></div>
   <div id="about" v-show="store.state.showAbout">
-    <h1>What's all the knobs and tickboxes for?</h1>
-
-    <h4>TweakList UI</h4>
+    <h2>What's all the knobs and tickboxes for?</h2>
+    <br>
+    <h3>TweakList UI</h3>
     <p>
-      TweakList-UI makes the PowerShell scripting framework
-      <a
-        href="https://github.com/couleur-tweak-tips/TweakList"
-        target="_blank"
-        >TweakList</a
-      >
-      accessible for everyone in an user-friendly web interface 😋,
-      select what you want, paste what it generates in your console,
-      and it'll take care of making it happen!
+      This website provides an intuitive interface to take advantage of 
+      <a href="https://github.com/couleur-tweak-tips/TweakList" target="_blank">TweakList</a>
+
+      <br><br>
+      <div class="center">
+        <ol>
+          <li>Select the modifications you wish</li>
+          <li>Click the Export and copy button</li>
+          <li>Open PowerShell (as Administrator, if instructed)</li>
+          <li>Paste the command, press <kbd>ENTER</kbd>, done!</li>
+        </ol>
+      </div>
+
     </p>
 
-    <h4>TweakList</h4>
+    <br>
+    <h3>TweakList</h3>
     <p>
       TweakList is a collection of useful PowerShell scripts
       to automate setting up Windows the way you want it, not Microsoft's.
@@ -36,7 +41,9 @@
       >single command</a
       >, we aims to make it both scriptable for us CLI nerds and welcoming for the conhost novices.
     </p>
-    <h4>Authors</h4>
+
+    <br>
+    <h3>Authors</h3>
     <div id="authors">
       <div class="author" v-for="author in authors">
         <a :href="author.github" target="_blank">
@@ -85,13 +92,24 @@ const authors = [
     name: 'Cy0ze',
     github: 'https://github.com/richarddorian',
     avatar:
-      'https://cdn.discordapp.com/avatars/690835131275018270/81860734f375ea9f1806edb46d0638fb.webp',
-    role: 'UI',
+      'https://avatars.githubusercontent.com/u/75615715?s=8',
+    role: 'Initial UI',
   },
 ];
 </script>
 
 <style scoped>
+ol
+{
+  list-style-position: inside !important;
+  display: table !important;
+  margin: 0 auto !important;
+}
+.center{
+    width:100%;
+    margin: 0 auto;
+    text-align:left;
+}
 div#about-bg {
   position: absolute;
   top: 0;
