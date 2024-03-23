@@ -1,0 +1,23 @@
+{
+  "short_name": "TLUI",
+  "name": "TweakList-UI",
+  "description": "Function builder for TweakList",
+  "icons": [
+    {
+      "src": "https://avatars.githubusercontent.com/u/82734468?s=192",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://avatars.githubusercontent.com/u/82734468?s=512",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "background_color": "#010409",
+  "theme_color": "#151b22",
+  "display": "standalone"
+}
