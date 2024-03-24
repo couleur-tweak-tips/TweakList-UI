@@ -1,4 +1,3 @@
-
 function loadList(tlui) {
 
     const functionsList = document.getElementById('functions-list')
@@ -89,7 +88,6 @@ function V2FocusFunction(functionName) {
 }
 
 
-
 function V2loadParameters(funcName) {
 
     const func = tlui[funcName]
@@ -140,7 +138,9 @@ function V2loadParameters(funcName) {
                     radioInput.addEventListener('change', () => {
                         writeParameter('func_' + funcName, paramName, radioValue)
                     })
-                    if (savedValue || (radioValue === tlui[funcName].parameters[paramName].default)) {
+                    if (savedValue === radioValue) {
+                        radioInput.checked = true
+                    } else if (!savedValue && radioValue === tlui[funcName].parameters[paramName].default) {
                         radioInput.checked = true
                         radioInput.dispatchEvent(new Event('change'));
                     }
