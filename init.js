@@ -82,7 +82,6 @@ const tlui = {
                     "RestorePreviousVersions",
                     "Print",
                     "GiveAccessTo",
-                    "EditWithPaint3D",
                     "IncludeInLibrary",
                     "AddToWindowsMediaPlayerList",
                     "CastToDevice",
