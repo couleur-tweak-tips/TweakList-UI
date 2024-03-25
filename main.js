@@ -52,10 +52,6 @@ function loadList(tlui) {
                 }
             }
             localStorage.setItem("selected", JSON.stringify(selected))
-            //
-            // let endTime = performance.now();
-            //
-            // console.log('Event listener ran in ' +  (endTime - startTime) + ' milliseconds');
         });
         listItem.addEventListener("dblclick", function (event) {
             checkbox.checked = !checkbox.checked
@@ -80,8 +76,10 @@ function V2FocusFunction(functionName) {
     const functions = document.querySelectorAll('.function')
     functions.forEach(func => {
         if (func.firstChild.id === functionName) {
+            func.classList.add("active")
             func.style['background-color'] = "#20262c"
         } else {
+            func.classList.remove("active")
             func.style['background-color'] = "initial"
         }
     })
@@ -238,6 +236,14 @@ function V2loadParameters(funcName) {
             }
         }
     }
+    parametersPane.addEventListener("change", () => {
+        const funclink = document.getElementById(funcName)
+
+        if (funclink.parentElement.classList.contains("active")) {
+            funclink.checked = true
+            funclink.dispatchEvent(new Event('change'));
+        }
+    })
 }
 
 function sanitizeString(string) {
