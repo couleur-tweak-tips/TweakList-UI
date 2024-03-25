@@ -191,7 +191,7 @@ function V2loadParameters(funcName) {
                         if (checkbox.checked) {
 
                             if (!selected.includes(checkboxValue)) {
-                                console.log("Adding " + checkboxValue)
+                                // console.log("Adding " + checkboxValue)
 
                                 selected.push(checkboxValue)
                             }
@@ -199,7 +199,7 @@ function V2loadParameters(funcName) {
 
                             const index = selected.indexOf(checkboxValue);
                             if (index > -1) { // only splice array when item is found
-                                console.log("Removing " + checkboxValue)
+                                // console.log("Removing " + checkboxValue)
 
                                 selected.splice(index, 1); // 2nd parameter means remove one item only
                             }
@@ -209,10 +209,12 @@ function V2loadParameters(funcName) {
 
                     parametersPane.appendChild(div)
                 }
+                parametersPane.appendChild(document.createElement("br"))
 
                 break
             }
-            case 'bool': {
+            case 'bool':
+            case 'boolean': {
                 const checkbox = document.createElement("input")
                 checkbox.type = "checkbox"
                 checkbox.id = paramName
@@ -229,6 +231,33 @@ function V2loadParameters(funcName) {
                 });
 
                 parametersPane.appendChild(document.createElement("br"))
+                break
+            }
+            case 'String':
+            case 'string': {
+                const span = document.createElement("span")
+                span.innerHTML = paramName + ': '
+
+                const input = document.createElement("input")
+                input.type = "text"
+                input.id = paramName
+                span.appendChild(input)
+
+                const saved = getParameter('func_' + funcName, paramName)
+                if (![undefined, null, ""].includes(saved)) {
+                    input.value = saved
+                }
+
+
+                input.addEventListener('input', function () {
+                    writeParameter('func_' + funcName, paramName, input.value.trim())
+                });
+
+                span.appendChild(document.createElement("br"))
+
+                parametersPane.appendChild(span)
+                parametersPane.appendChild(document.createElement("br"))
+
                 break
             }
             default: {
@@ -253,7 +282,7 @@ function sanitizeString(string) {
     }
 
     let doQuoting = false;
-    console.log(string)
+
     if (string.includes(" ")) {
         doQuoting = true
     }
@@ -284,7 +313,13 @@ function exportCode() {
 
         for (const arg in conf['func_' + funcName]) {
             switch (tlui[funcName].parameters[arg].type) {
+                case 'String':
                 case 'string':
+                    const string = sanitizeString(conf['func_' + funcName][arg])
+                    if (string !== "") {
+                        paragraph.innerHTML += ` -${arg} ${string}`
+                    }
+                    break
                 case 'enum':
                     paragraph.innerHTML += ` -${arg} ${sanitizeString(conf['func_' + funcName][arg])}`
                     break
@@ -294,12 +329,12 @@ function exportCode() {
                         paragraph.innerHTML += ` -${arg} ${values.map(string => sanitizeString(string)).join(', ')}`
                     }
                     break
+                case 'boolean':
                 case 'bool': {
                     if (
                         conf['func_' + funcName][arg]
                     ) {
                         paragraph.innerHTML += ` -${arg}`
-
                     }
                 }
             }
