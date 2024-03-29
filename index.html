@@ -30,12 +30,11 @@
     <!--
     notable global variables:
 
-    - tlui holds the template to build container
-    - conf holds the user defined parameters, synced with localStorage
+    conf holds the user defined parameters, loaded from localStorage at page load
+
+    writeParameter and getParameter always update conf and localStorage in tandem
     -->
-    <script src="init.js"></script>
     <script src="storageManager.js"></script>
-    <script src="main.js"></script>
 </head>
 <body>
 <div class="nav">
@@ -84,9 +83,27 @@
     >reset conf
     </button>
 </span>
+<script src="main.js"></script>
 <script>
-    loadList(tlui)
-</script>
+    let tlui = {};
 
+    const fetch_error = "Failed fetching the latest version of the TweakList manifest\n\nPlease open the console report this:\n\nhttps://github.com/couleur-tweak-tips/TweakList"
+
+    fetch('https://raw.githubusercontent.com/couleur-tweak-tips/TweakList/master/Manifests.json')
+        .catch(error => {
+            alert(fetch_error)
+            console.log(fetch_error)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(fetch_error);
+            }
+            return response.json();
+        })
+        .then(data => {
+            tlui = data
+            loadList(tlui);
+        })
+</script>
 </body>
 </html>
