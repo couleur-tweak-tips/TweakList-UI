@@ -87,7 +87,6 @@ function V2FocusFunction(functionName) {
 
             const url = new URLSearchParams(window.location.search)
             url.set('f', functionName)
-            console.log(url.toString())
             const newURL = `${window.location.origin}${window.location.pathname}?${url.toString()}`;
             window.history.pushState({path: newURL}, '', newURL);
 
