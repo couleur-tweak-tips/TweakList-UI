@@ -77,6 +77,13 @@
         <div id="parameters-pane"><!--automatically generated --></div>
     </div>
 </div>
+<span id="hidden-buttons">
+    <a target="_blank" href='https://raw.githubusercontent.com/couleur-tweak-tips/TweakList/master/Manifests.json'>view manifest</a>
+    <button
+        onclick="if (confirm('you sure you wanna nuke all of your settings?\n\nthere is no coming back')){localStorage.clear(); location.reload();}"
+    >reset conf
+    </button>
+</span>
 <script>
     loadList(tlui)
 </script>
