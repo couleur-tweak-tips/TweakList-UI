@@ -67,8 +67,16 @@ function loadList(tlui) {
 
         functionsList.appendChild(listItem)
     }
-    V2loadParameters(first_function)
-    V2FocusFunction(first_function)
+
+    const url = new URLSearchParams(window.location.search);
+    const get_F = url.get('f')
+    if (get_F) {
+        V2loadParameters(get_F)
+        V2FocusFunction(get_F)
+    } else {
+        V2loadParameters(first_function)
+        V2FocusFunction(first_function)
+    }
 }
 
 
@@ -76,6 +84,13 @@ function V2FocusFunction(functionName) {
     const functions = document.querySelectorAll('.function')
     functions.forEach(func => {
         if (func.firstChild.id === functionName) {
+
+            const url = new URLSearchParams(window.location.search)
+            url.set('f', functionName)
+            console.log(url.toString())
+            const newURL = `${window.location.origin}${window.location.pathname}?${url.toString()}`;
+            window.history.pushState({path: newURL}, '', newURL);
+
             func.classList.add("active")
             func.style['background-color'] = "#20262c"
         } else {
